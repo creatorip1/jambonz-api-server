@@ -59,7 +59,7 @@ getMysqlConnection((err, conn) => {
     ], (err) => {
       if (err) return console.log(err, 'Error inserting admin user');
       console.log('successfully reset admin password');
-      const uuid = uuidv4();
+      const uuid = process.env.API_AUTH_TOKEN
       conn.query(sqlChangeAdminToken, [uuid], (err) => {
         if (err) return console.log(err, 'Error updating admin token');
         console.log('successfully changed admin tokens');
